@@ -1,0 +1,4 @@
+This file forces a rebuild
+Version: 8
+Simplified approach without config template
+Dynamic configuration generation in startup script
