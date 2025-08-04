@@ -20,6 +20,8 @@ Configuração otimizada do Odoo 17 para VIKA Commodities no CapRover.
 Conectado automaticamente ao CapRover via webhook.
 Push para main = deploy automático.
 
+**Status:** ✅ Correção aplicada - template de configuração funcionando
+
 ## Configuração
 
 - **URL:** http://odoo-17-test.vika.com.pt
