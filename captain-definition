@@ -4,20 +4,17 @@
     "FROM odoo:17.0",
     "USER root",
     "",
-    "# Install git to clone OCA addons",
-    "RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*",
+    "# Install gettext-base for envsubst",
+    "RUN apt-get update && apt-get install -y gettext-base && rm -rf /var/lib/apt/lists/*",
     "",
-    "# Clone OCA Portugal addons directly",
-    "RUN git clone https://github.com/OCA/l10n-portugal.git /mnt/extra-addons/oca_l10n_portugal",
-    "",
-    "# Copy VIKA configuration",
-    "COPY ./config/odoo-caprover.conf /etc/odoo/odoo.conf",
-    "",
-    "# Set permissions",
-    "RUN chown -R odoo:odoo /mnt/extra-addons",
+    "# Copy our startup script",
+    "COPY ./scripts/start-odoo.sh /usr/local/bin/start-odoo.sh",
+    "RUN chmod +x /usr/local/bin/start-odoo.sh",
     "",
     "USER odoo",
+    "EXPOSE 8069",
     "",
-    "EXPOSE 8069"
+    "# Start with our custom script",
+    "CMD [\"/usr/local/bin/start-odoo.sh\"]"
   ]
 }
